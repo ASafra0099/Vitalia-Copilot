@@ -1,0 +1,25 @@
+Doctor: good morning
+Patient: good morning
+Doctor: how can i help you?
+Patient: I am not feeling since yesterday
+Doctor: What symptoms you have?
+Patient: I have high fever, headache and cough
+Doctor: Do you have lose of appetite?
+Patient: yes i can't eat anything
+Patient: And i feel vomiting too
+Doctor: Do you have any allergies?
+Patient: Yes i have eyewater and itching
+Doctor: Ok. You have few signs of malaria. Nothing to worry about. In most cases, the test comes out to be negative. It’s just careful, as there has been a spurt in malaria cases in the last month or so.
+Doctor: I will prefer three medicines and syrup.
+Doctor: artemether-lumefantrine: 2 drops in morning and evening
+Doctor: Artheget-DS: 1 drop in evening
+Doctor: have panadol 3 times per day
+Doctor: dring warm water
+Doctor: take rest
+Patient: okay doctor
+Doctor: any questions?
+Patient: No
+Patient: Thank you
+Doctor: welcome
+Doctor: Name?
+Patient: John

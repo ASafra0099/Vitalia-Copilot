@@ -1,0 +1,19 @@
+Doctor: Hii
+Doctor: name
+Patient: Aliza
+Doctor: what is the problem?
+Patient: i am not feeling well
+Doctor: tell me what symptoms you have?
+Patient: headache
+Patient: vomiting
+Patient: fever
+Doctor: ok do you have cough
+Patient: yes
+Doctor: You have a virus infection
+Doctor: take some panadol
+Doctor: take rest
+Doctor: drink warm water
+Doctor: do you have any allergies for medicine
+Patient: yes sometimes i get itcing
+Doctor: then take a cough syrup
+Doctor: i prefer to take medini cough syrup

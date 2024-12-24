@@ -1,0 +1,24 @@
+Doctor: hello..
+Doctor: How can i assist you?
+Patient: Hello doctor..
+Patient: I am not feeling well since yesterday.
+Doctor: Can i know what symptoms you have?
+Patient: I have fever, headache and cough.
+Doctor: What did you eat last night?
+Patient: I ate rotti.
+Doctor: Do you have any allergies?
+Patient: Yes i have itching
+Patient: And doctor i feel vomitting. i can't eat anything.
+Doctor: okay it is like you got a virus infction
+Doctor: Don't worry
+Doctor: Just take some medicine which i prefer.
+Doctor: Have more rest, drink warm water and don't eat heavy food
+Doctor: Take panadol for 3 times per day.
+Doctor: artemether-lumefantrine: 2 times per day after lunch and dinner
+Doctor: Take these medicines, If you'll not feeling better you can contact me again
+Doctor: Do you have any questions?
+Patient: No doctor
+Patient: Thank you
+Doctor: welcome
+Doctor: Name?
+Patient: Aliza

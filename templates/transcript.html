@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transcript</title>
+</head>
+
+<style>
+
+* {
+    margin: 0px;
+    padding: 7px;
+    font-family: sans_serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-left: 28px;
+}
+
+
+.container {
+    width: 602px;
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 12px 4px 7px rgba(12,11,12,0.4);
+    background-color: #6F7C55;
+}
+
+
+.header{
+color:white;
+padding:15px;
+}
+
+
+
+.body {
+    flex: 28;
+    color: white;
+    background-color: #333333;
+    padding: 0px 1px;
+    border-radius: 13px;
+    overflow-y: scroll
+}
+
+.footer{
+display:flex;
+}
+
+button.btn2 {
+    width: 56px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 19px;
+    height: 42px;
+    font-family: emoji;
+    transform: translate(38px, 1px);
+}
+
+button.btn1 {
+    width: 56px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 19px;
+    height: 42px;
+    font-family: emoji;
+        transform: translate(15px, 1px);
+}
+
+button.btn2:hover{
+background-color:#617144;
+transiton:0.2s ease;
+}
+
+button.btn1:hover{
+background-color:#617144;
+transiton:0.2s ease;
+} 
+
+</style>
+
+
+<body>
+<img src= " {{url_for('static', filename='theme.jpg')  }}" class="image" style=" position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: -1; opacity: 0.6;;mix-blend-mode:multiply" />
+  <div class="container">
+   
+   <div class="header">
+    <h1>Transcript</h1>
+   </div>
+    
+  <div class="body" style="white-space: pre;">
+    <pre>
+      {{ transcript_summary }}
+    </pre>
+  </div>
+  
+  <div class="footer">
+    <button class="btn1" onclick="copyToClipboard()">Copy</button>
+
+    <button class="btn2" onclick="goToHomePage()">Home</button>
+  </div>
+
+    <script>
+        function copyToClipboard() {
+           
+            var transcriptText = '';
+            transcriptText += 'Patient name: {{ transcript_summary['Patient name'] }}\n';
+            transcriptText += 'Symptoms: {{ transcript_summary['symptoms'] }}\n';
+            transcriptText += 'Allergies: {{ transcript_summary['Allergies'] }}\n';
+            transcriptText += 'Illness: {{ transcript_summary['illness'] }}\n';
+            transcriptText += 'Medications: {{ transcript_summary['Medications']}}';
+          
+
+        
+            var tempTextarea = document.createElement("textarea");
+            tempTextarea.value = transcriptText;
+            document.body.appendChild(tempTextarea);
+
+            tempTextarea.select();
+            document.execCommand('copy');
+
+  
+            document.body.removeChild(tempTextarea);
+
+            alert('Transcript has been copied to the clipboard');
+        }
+
+        function goToHomePage() {
+      
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

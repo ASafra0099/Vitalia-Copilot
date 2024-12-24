@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join</title>
+</head>
+
+<style>
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+font-family:sans_serif;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+background-color:#f8f8f8;
+display:flex;
+justify-content:left;
+align-items:center;
+    margin-top: -10px;
+    margin-left: 200px;
+}
+
+
+.container {
+    width: 487px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 12px 4px 7px rgba(12,11,12,0.4);
+    background-color: #6F7C55;
+}
+.header{
+color:white;
+padding:15px;
+}
+
+
+.body{
+flex:1;
+color:white;
+background-color:#333333;
+padding:20px 30px;
+}
+
+
+
+form input {
+    height: 38px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-style: italic;
+    background-color: #E8EFDA;
+    transform: translate(8%, 12%);
+    top: 58%;
+    left: 28%;
+    color: #333333;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: -5px -20px;
+    width: 158px;
+}
+
+
+button {
+    width: 141px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: #6F7C55;
+    color: white;
+    font-family: emoji;
+    top: 58%;
+    left: 28%;
+        transform: translate(99%, 60%);
+    font-size: 18px;
+    padding: 8px 22px;
+    border: none;
+    cursor: pointer;
+    border-radius: 49px;
+}
+
+
+
+button:hover{
+background-color:#333333;
+transiton:0.2s ease;
+}
+
+label {
+     color: white;
+    padding: 21px;
+    font-family: Georgia;
+    font-size: 19px;
+}
+
+select {
+    height: 38px;
+    background-color: #E8EFDA;
+    transform: translate(32%, 17%);
+    top: 58%;
+    left: 28%;
+    color: #333333;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 5px 17px;
+    font-size: 16px;
+    font-style: italic;
+    width: 163px;
+}
+
+.overlay-image3 {
+    position: absolute;
+    top: 299px;
+    left: 378px;
+    z-index: 1;
+    width: 130px;
+}
+
+.overlay-image4 {
+    position: absolute;
+    top: 236px;
+    left: 955px;
+    z-index: 1;
+    width: 723px;
+    height: 535px;
+    border-left-style: outset;
+}
+
+
+form {
+    margin-top: 21em;
+}
+
+.centered {
+    position: absolute;
+    top: 44%;
+    left: -1%;
+    transform: translate(-49%, -33%);
+    color: black;
+    font-family: monospace;
+    margin-left: 449px;
+    font-weight: normal;
+    font-size: 15px;
+    text-align-last: center;
+}
+
+</style>
+
+
+<body>
+<img src= " {{url_for('static', filename='theme.jpg')  }}" class="image" style=" position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: -1; opacity: 0.6;.mix-blend-mode:multiply" />
+<img src= " {{url_for('static', filename='online.gif')  }}" class="overlay-image4" style="mix-blend-mode:multiply; background-color:#6E804A" />
+
+
+ <div class="container">
+
+  <div class="header">
+    <h1>Vitalia</h1>
+  </div>
+  
+  <div class="body">
+    
+    <img src= " {{url_for('static', filename='logo.JPG')  }}" class="overlay-image3" style="mix-blend-mode:multiply; background-color:#CBDAAD" />
+     <div class="centered">  Click on 'Start consultation'<br> below to start the transcription.</div>
+    
+    <form action="/chat">
+        <label class="label1" for="user-type">User Type:</label>
+        
+        <select id="user-type" name="user-type" required>
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+        </select>
+        <br></br>
+        
+        <label class="label2" for="room">Room Number:</label>
+        <input type="text" id="room" name="room" required>
+        <br></br>
+        <button type="submit">Start Consulation</button>
+    </form>
+  </div>
+  
+ </div>
+  
+</body>
+</html>
+

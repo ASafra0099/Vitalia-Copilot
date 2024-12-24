@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultation Room</title>
+</head>
+
+<style>
+* {
+    margin: 0px;
+    padding: 7px;
+    font-family: sans_serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-left: 28px;
+}
+
+
+.container {
+    width: 602px;
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 12px 4px 7px rgba(12,11,12,0.4);
+    background-color: #6F7C55;
+}
+
+
+.header{
+color:white;
+padding:15px;
+}
+
+
+
+.chat-body {
+    flex: 28;
+    color: white;
+    background-color: #333333;
+    padding: 0px 1px;
+    border-radius: 13px;
+    overflow-y: scroll
+}
+
+
+.footer{
+display:flex;
+}
+
+form input {
+    flex: 1;
+    height: 56px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #E8EFDA;
+        width: max-content;
+    padding-right: 113px;
+
+}
+
+
+
+
+button.button2 {
+    width: 56px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 19px;
+    height: 42px;
+    font-family: emoji;
+    transform: translate(15px, 7px);
+}
+
+button.button1 {
+    width: 56px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 19px;
+    height: 42px;
+    font-family: emoji;
+    transform: translate(9px, 1px);
+}
+
+button.button3 {
+    width: 88px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    border-radius: 19px;
+    height: 42px;
+    font-family: emoji;
+    transform: translate(29px, 6px);
+}
+
+
+button.button2:hover{
+background-color:#617144;
+transiton:0.2s ease;
+}
+
+button.button1:hover{
+background-color:#617144;
+transiton:0.2s ease;
+}
+
+button.button3:hover{
+background-color:#617144;
+transiton:0.2s ease;
+}
+
+
+
+</style>
+
+
+
+<body>
+<img src= " {{url_for('static', filename='theme.jpg')  }}" class="image" style=" position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: -1; opacity: 0.6;;mix-blend-mode:multiply" />
+
+
+  <div class="container">
+  
+   <div class="header">
+     <h1>Consultation Room: {{ room }}</h1>
+   </div>
+   
+   <div class="chat-body">
+     <div id="messages"></div>
+   </div>
+    
+   <div class="footer">
+      
+    <form id="message-form">
+        <input type="text" id="message" placeholder="Type your message...">
+    
+        <button class="button1" type="submit">Send</button>
+    </form>
+   
+
+    <form id="stop-chat-form">
+        <button class="button2" type="button" id="stop-chat-button">Stop</button>
+    </form>
+    
+       <button class="button3" type="button" id="view-transcript-button" style="margin-top: 7px;">Transcript</button>
+   
+    
+       <div id="transcript-summary"></div>
+   </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+       const socket = io.connect('http://' + document.domain + ':' + location.port);   
+       socket.on('connect', function () {
+           socket.emit('join', { user_type: '{{ user_type }}', room: '{{ room }}' });
+      });
+
+        socket.on('message', function(data) {
+            const messages = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = `${data.user_type}: ${data.message}`;
+            messages.appendChild(messageDiv);
+        });
+
+        document.getElementById('message-form').onsubmit = function(e) {
+            e.preventDefault();
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value.trim();
+            if (message.length > 0) {
+                socket.emit('send_message', {user_type: '{{ user_type }}', room: '{{ room }}', message: message});
+                messageInput.value = '';
+            }
+        };
+
+        document.getElementById('stop-chat-button').onclick = function() {
+            socket.emit('stop_chat', { room: '{{ room }}' });
+        };
+      
+        socket.on('confirm_stop', function(data) {
+        const room = data.room;
+        const confirmation = confirm('Are you sure you want to stop the chat? Your chat history will be lost.');
+        if (confirmation) {
+        socket.emit('stop_chat', { room: room });
+        window.location.href = '/'; 
+        }
+        });
+
+
+      
+        document.getElementById('view-transcript-button').onclick = function() {
+            window.open('{{ url_for("transcript", room=room) }}', 'blank');
+        };
+
+        socket.on('transcript_summary', function(data) {
+            const transcriptSummaryDiv = document.getElementById('transcript-summary');
+            transcriptSummaryDiv.innerHTML = '<h2>Transcript Summary:</h2>' + data.transcript_summary;
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            const confirmationMessage = 'Are you sure you want to leave the chat? Your chat history will be lost.';
+            (e || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        });
+
+    </script>
+    
+</body>
+</html>

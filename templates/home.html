@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vitalia Home</title>
+</head>
+
+<style>
+
+.topnav {
+  background-color: #333333;
+  overflow: hidden;
+}
+
+h1 {
+    color: white;
+    font-family: Georgia;
+    margin-left: 435px;
+}
+
+.centered {
+    position: absolute;
+    top: 24%;
+    left: 1%;
+    transform: translate(-49%, -33%);
+    color: black;
+    font-family: optima;
+    margin-left: 449px;
+    font-weight: bold;
+    font-size: 54px;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 516px;
+    left: 142px;
+    text-align: -webkit-match-parent;
+    font-size: larger;
+    font-family: optima;
+}
+
+.Top-left-1 {
+    position: absolute;
+    bottom: 339px;
+    left: 84px;
+    text-align: -webkit-match-parent;
+    font-size: 12px;
+    font-family: Verdana;
+     color: #4A5731;
+     font-style: italic;
+     font-weight: bold;
+}
+
+.Top-left-2 {
+    position: absolute;
+    bottom: 339px;
+    left: 433px;
+    text-align: -webkit-match-parent;
+    font-size: 12px;
+    font-family: Verdana;
+     color: #4A5731;
+     font-style: italic;
+     font-weight: bold;
+}
+
+.Top-left-3 {
+    position: absolute;
+    bottom: 339px;;
+    left: 700px;
+    text-align: -webkit-match-parent;
+     font-size: 12px;
+     font-family: Verdana;
+    color: #4A5731;
+    font-style: italic;
+    font-weight: bold;
+
+}
+
+.container .btn {
+    position: absolute;
+    top: 55%;
+    left: 28%;
+    transform: translate(-50%, -43%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #000000;
+    color: white;
+    font-size: 18px;
+    padding: 10px 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 33px;
+    font-family: emoji;
+}
+
+.container .btn:hover {
+  background-color: #617144;
+  transiton:0.2s ease;
+}
+
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.overlay-image {
+    position: absolute;
+    top: 207px;
+    left: 985px;
+    z-index: 1;
+    width: 361px;
+    border-bottom: groove;
+}
+
+.overlay-image1 {
+    position: absolute;
+    top: 348px;
+    left: 1153px;
+    z-index: 1;
+    width: 270px;
+    border-bottom: groove;
+}
+
+.overlay-image2 {
+    position: absolute;
+    top: 99px;
+    left: 1422px;
+    z-index: 1;
+    width: 270px;
+    border-bottom: groove;
+}
+
+
+</style>
+
+<body>
+
+  <div class="topnav">
+    <h1> <span style="font-weight: bold;font-size: larger;">Vitalia</span>  <span style="font-weight: normal;">Copilot</span> </h1>
+  </div>
+  
+  <div class="container">
+   
+    
+    <img  id="image1"  src="{{ url_for('static', filename='theme.jpg') }}" width="100%" height="700px" >
+    <img  class="overlay-image" src="{{ url_for('static', filename='doctor.jpg') }}" style="mix-blend-mode:multiply; background-color:#96A27F">
+    <img  class="overlay-image1" src="{{ url_for('static', filename='consult.PNG') }}" style="mix-blend-mode:multiply; background-color:#CBDAAD">
+    <img  class="overlay-image2" src="{{ url_for('static', filename='trans.PNG') }}" style="mix-blend-mode:multiply; background-color:#CBDAAD">
+ 
+    
+    <form method="get" action="{{ url_for('start') }}">
+    <button class="btn " type="submit">Try it for free </button>
+    </form>
+    
+    <div class="centered">Elevate Your <br> Healthcare Experience</div>
+    <div class="Top-left-1">Easy to use in your web browser</div>
+    <div class="Top-left-2">No sign-up required</div>
+    <div class="Top-left-3">No data stored</div>
+    <div class="bottom-left">Welcome to a new era in healthcare! <br>Vitalia Copilot autometically generates clinical notes after online consultation.<br>  Say goodbye to the inconvenience of travel and waiting rooms, and embrace the future of healthcare.</div>
+    
+  
+    
+    
+  </div>
+   
+
+</body>
+</html>
